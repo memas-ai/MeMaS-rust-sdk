@@ -1,7 +1,7 @@
 /*
  * MeMaS CP APIs
  *
- * This is the Control Plane APIs for MeMaS (Memory Management Service).
+ * This is the Control Plane client for MeMaS (Memory Management Service).  See https://github.com/memas-ai/MeMaS for more details.
  *
  * The version of the OpenAPI document: 0.1.0
  * Contact: max.yu@memas.ai
@@ -13,15 +13,15 @@
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct CreateUserRequest {
-    /// \"Full namespace name, where child namespaces are appended after their parents' names with '.'\"
-    #[serde(rename = "namespace_pathname", skip_serializing_if = "Option::is_none")]
-    pub namespace_pathname: Option<String>,
+    /// Full namespace name, where child namespaces are appended after their parents' names with '.'
+    #[serde(rename = "namespace_pathname")]
+    pub namespace_pathname: String,
 }
 
 impl CreateUserRequest {
-    pub fn new() -> CreateUserRequest {
+    pub fn new(namespace_pathname: String) -> CreateUserRequest {
         CreateUserRequest {
-            namespace_pathname: None,
+            namespace_pathname,
         }
     }
 }

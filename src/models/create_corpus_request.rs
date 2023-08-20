@@ -1,7 +1,7 @@
 /*
  * MeMaS CP APIs
  *
- * This is the Control Plane APIs for MeMaS (Memory Management Service).
+ * This is the Control Plane client for MeMaS (Memory Management Service).  See https://github.com/memas-ai/MeMaS for more details.
  *
  * The version of the OpenAPI document: 0.1.0
  * Contact: max.yu@memas.ai
@@ -14,17 +14,17 @@
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct CreateCorpusRequest {
     /// full corpus name
-    #[serde(rename = "corpus_pathname", skip_serializing_if = "Option::is_none")]
-    pub corpus_pathname: Option<String>,
-    #[serde(rename = "corpus_type", skip_serializing_if = "Option::is_none")]
-    pub corpus_type: Option<crate::models::CorpusType>,
+    #[serde(rename = "corpus_pathname")]
+    pub corpus_pathname: String,
+    #[serde(rename = "corpus_type")]
+    pub corpus_type: crate::models::CorpusType,
 }
 
 impl CreateCorpusRequest {
-    pub fn new() -> CreateCorpusRequest {
+    pub fn new(corpus_pathname: String, corpus_type: crate::models::CorpusType) -> CreateCorpusRequest {
         CreateCorpusRequest {
-            corpus_pathname: None,
-            corpus_type: None,
+            corpus_pathname,
+            corpus_type,
         }
     }
 }
