@@ -1,9 +1,9 @@
 [package]
 name = "memas-sdk"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["max.yu@memas.ai"]
 description = "This is the Control Plane client for MeMaS (Memory Management Service).  See https://github.com/memas-ai/MeMaS for more details."
-license = "Apache-2.0"
+license = "Apache 2.0"
 edition = "2018"
 
 [dependencies]
