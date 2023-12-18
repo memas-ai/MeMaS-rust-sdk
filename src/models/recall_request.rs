@@ -12,23 +12,19 @@
 
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
-pub struct CreateCorpusRequest {
-    /// Full namespace name, where child namespaces are appended after their parents' names with '.'
-    #[serde(rename = "namespace_pathname")]
-    pub namespace_pathname: String,
+pub struct RecallRequest {
+    #[serde(rename = "clue")]
+    pub clue: String,
     /// Full name of a corpus, specifying which namespace the corpus is under.  The name takes on the format of \\\"<namespace_pathname>:<corpus_name>\\\"
     #[serde(rename = "corpus_pathname")]
     pub corpus_pathname: String,
-    #[serde(rename = "corpus_type")]
-    pub corpus_type: crate::models::CorpusType,
 }
 
-impl CreateCorpusRequest {
-    pub fn new(namespace_pathname: String, corpus_pathname: String, corpus_type: crate::models::CorpusType) -> CreateCorpusRequest {
-        CreateCorpusRequest {
-            namespace_pathname,
+impl RecallRequest {
+    pub fn new(clue: String, corpus_pathname: String) -> RecallRequest {
+        RecallRequest {
+            clue,
             corpus_pathname,
-            corpus_type,
         }
     }
 }

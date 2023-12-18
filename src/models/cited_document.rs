@@ -12,16 +12,18 @@
 
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
-pub struct CreateUserRequest {
-    /// Full namespace name, where child namespaces are appended after their parents' names with '.'
-    #[serde(rename = "namespace_pathname")]
-    pub namespace_pathname: String,
+pub struct CitedDocument {
+    #[serde(rename = "document")]
+    pub document: String,
+    #[serde(rename = "citation")]
+    pub citation: Box<crate::models::Citation>,
 }
 
-impl CreateUserRequest {
-    pub fn new(namespace_pathname: String) -> CreateUserRequest {
-        CreateUserRequest {
-            namespace_pathname,
+impl CitedDocument {
+    pub fn new(document: String, citation: crate::models::Citation) -> CitedDocument {
+        CitedDocument {
+            document,
+            citation: Box::new(citation),
         }
     }
 }

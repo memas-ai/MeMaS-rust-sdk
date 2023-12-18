@@ -12,16 +12,15 @@
 
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
-pub struct CreateUserRequest {
-    /// Full namespace name, where child namespaces are appended after their parents' names with '.'
-    #[serde(rename = "namespace_pathname")]
-    pub namespace_pathname: String,
+pub struct Memorize200Response {
+    #[serde(rename = "success", skip_serializing_if = "Option::is_none")]
+    pub success: Option<bool>,
 }
 
-impl CreateUserRequest {
-    pub fn new(namespace_pathname: String) -> CreateUserRequest {
-        CreateUserRequest {
-            namespace_pathname,
+impl Memorize200Response {
+    pub fn new() -> Memorize200Response {
+        Memorize200Response {
+            success: None,
         }
     }
 }

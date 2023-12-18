@@ -12,16 +12,20 @@
 
 
 #[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
-pub struct CreateUserRequest {
+pub struct DeleteCorpusRequest {
     /// Full namespace name, where child namespaces are appended after their parents' names with '.'
     #[serde(rename = "namespace_pathname")]
     pub namespace_pathname: String,
+    /// Full name of a corpus, specifying which namespace the corpus is under.  The name takes on the format of \\\"<namespace_pathname>:<corpus_name>\\\"
+    #[serde(rename = "corpus_pathname")]
+    pub corpus_pathname: String,
 }
 
-impl CreateUserRequest {
-    pub fn new(namespace_pathname: String) -> CreateUserRequest {
-        CreateUserRequest {
+impl DeleteCorpusRequest {
+    pub fn new(namespace_pathname: String, corpus_pathname: String) -> DeleteCorpusRequest {
+        DeleteCorpusRequest {
             namespace_pathname,
+            corpus_pathname,
         }
     }
 }
